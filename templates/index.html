@@ -2,5 +2,9 @@
 Welcome to My Flask Blog!
 {% endblock %}
 {% block content %}
-__BLOG_POSTS__
+<div class="post">
+    <h2>{{blog_post.title}}</h2>
+    <p><em>{{blog_post.author}}</em></p>
+    <p>{{blog_post.content}}</p>
+</div>
 {% endblock %}
