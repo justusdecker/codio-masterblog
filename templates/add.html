@@ -4,9 +4,15 @@
 
 {% block content %}
 <form method="POST">
-    <input name="name">
+    <input name="author">
     <input name="title"> 
     <input name="content">
     <input type="submit">
 </form>
+{% if post_flag %}
+<h2>Successfully added:</h2>
+<p>FROM: {{request.form['author']}}</p>
+<p>TITLE: {{request.form['title']}}</p>
+<p>CONTENT: {{request.form['content']}}</p>
+{% endif %}
 {% endblock %}
