@@ -1,5 +1,8 @@
 from bin.datamanagement import jsf,jff
 
+class IndexDuplicateError(Exception):
+    """No duplicates should exist"""
+
 class BlogPost:
     """
     Represents a single blog post, providing access to its title, author,
@@ -65,7 +68,7 @@ class Blog:
         Loads blog posts from 'blog.json' into the 'data' attribute.
         Each loaded post is converted into a BlogPost object.
         """
-        self.data = [BlogPost({i}) for i in jff('blog.json')]
+        self.data = [BlogPost(i) for i in jff('blog.json')]
         print(self.aslist())
     
     def aslist(self) -> list:
@@ -78,11 +81,14 @@ class Blog:
     
     def add(self, post: BlogPost) -> None:
         """Adds a new blog post to the beginning of the list."""
+        if post.id in [i.id for i in self.data]:
+            raise IndexDuplicateError
         self.data.insert(0,post)
     
     def delete(self, post_id: int) -> None:
         """Deletes a blog post by its index (ID)."""
-        self.data.pop(post_id)
+        ([i.id for i in self.data])
+        self.data.pop(self.data.index([i.id for i in self.data]))
     def get_highest_index(self) -> int:
         """this will prevent most of the duplicate id issues"""
         return max([i.id for i in self.data])
