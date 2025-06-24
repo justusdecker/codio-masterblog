@@ -2,9 +2,11 @@
 Welcome to My Flask Blog!
 {% endblock %}
 {% block content %}
+{% for post in posts %}
 <div class="post">
-    <h2>{{blog_post.title}}</h2>
-    <p><em>{{blog_post.author}}</em></p>
-    <p>{{blog_post.content}}</p>
+    <h2>{{post.title}}</h2>
+    <p><em>{{post.author}}</em></p>
+    <p>{{post.content}}</p>
 </div>
+{% endfor %}
 {% endblock %}
