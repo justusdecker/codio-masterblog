@@ -1,16 +1,16 @@
-{% block title %}
-Welcome to My Flask Blog!
-{% endblock %}
+{% extends "default.html" %}
+{% block title %}Welcome to My Flask Blog!{% endblock %}
+{% block h1_title %}Welcome to My Flask Blog!{% endblock %}
 {% block content %}
-{% for post in posts %}
-<div class="post">
-    <h2>{{post.title}}</h2>
-    <p><em>{{post.author}}</em></p>
-    <p>{{post.content}}</p>
-    <p>{{post.id}}</p>
-    <form action="/delete/{{ post.id }}">
-        <input type="submit" value="Delete" />
-    </form>
-</div>
-{% endfor %}
+    {% for post in posts %}
+        <div class="post">
+            <h2>{{post.title}}</h2>
+            <p><em>{{post.author}}</em></p>
+            <p>{{post.content}}</p>
+            <p>{{post.id}}</p>
+            <form action="/delete/{{ post.id }}">
+                <input type="submit" value="Delete" />
+            </form>
+        </div>
+    {% endfor %}
 {% endblock %}
