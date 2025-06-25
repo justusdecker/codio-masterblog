@@ -6,10 +6,12 @@
         <div class="post">
             <h2>{{post.title}}</h2>
             <p><em>{{post.author}}</em></p>
-            <p>{{post.content}}</p>
-            <p>{{post.id}}</p>
+            <p class="content">{{post.content}}</p>
             <form action="/delete/{{ post.id }}">
                 <input type="submit" value="Delete" />
+            </form>
+            <form action="/update/{{ post.id }}">
+                <input type="submit" value="Edit" />
             </form>
         </div>
     {% endfor %}
