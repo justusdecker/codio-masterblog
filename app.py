@@ -43,7 +43,7 @@ def add():
          "author":request.form['author'],
          "title": request.form['title'],
          "content": request.form['content'],
-         "id": BLOG.get_highest_index()}
+         "id": BLOG.get_highest_index()+1}
         BLOG.add(BlogPost(new_post))
         post_flag = True
     return render_template('add.html',post_flag=post_flag)
