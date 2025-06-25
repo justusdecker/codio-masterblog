@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Flask Blog{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
 </head>
 <body>
+    
     <h1>{% block h1_title %}{% endblock %}</h1>
+    <div id="spacer" align="center"><a href="/">Main</a><a href="/add">Write a post</a></div>
     {% block content %}{% endblock %}
 </body>
 </html>
