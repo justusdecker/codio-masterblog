@@ -1,7 +1,10 @@
+{% extends "default.html" %}
 {% block title %}
-
+Update a post
 {% endblock %}
-
+{% block h1_title %}
+Update a post
+{% endblock %}
 {% block content %}
 <form method="POST">
     <input type="text" id="author" name="author" placeholder="Author" value="{{ post.author }}">
