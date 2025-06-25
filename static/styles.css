@@ -1,27 +1,31 @@
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #F5F5F5;
+    background-color: #333;
     padding: 20px;
-    color: #333;
+    color: #F5F5F5;
 }
-
 h1 {
     text-align: center;
-    color: #4F4F4F;
-}
+    color: #7F7F7F;
 
+}
 .post {
-    background-color: #FFF;
+    background-color: #242424;
     border: 1px solid #DDD;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 8px;
 }
 
-.post h2 {
+h2, p {
+    color: #FFF;
+}
+
+.post, h2 {
     margin-top: 0;
 }
 
-.post p {
+.post, p {
     margin: 10px 0;
 }
