@@ -1,0 +1,13 @@
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <input type="text" id="author" name="author" placeholder="Author" value="{{ post.author }}">
+    <input type="text" id="title" name="title" placeholder="Title" value="{{ post.title }}">
+    <input type="text" id="content" name="content" placeholder="Content" value="{{ post.content }}">
+    <input type="submit">
+</form>
+
+{% endblock %}
