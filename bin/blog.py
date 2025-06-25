@@ -41,6 +41,19 @@ class BlogPost:
         """Gets the content of the blog post."""
         return self.data['content']
     
+    @title.setter
+    def title(self, value: str):
+        """Sets the title of the blog post."""
+        self.data['title'] = value
+    @author.setter
+    def author(self, value: str):
+        """Sets the author of the blog post."""
+        self.data['author'] = value
+    @content.setter
+    def content(self, value: str):
+        """Sets the content of the blog post."""
+        self.data['content'] = value
+    
 class Blog:
     """
     Manages a collection of blog posts, providing methods for loading, saving,
@@ -79,20 +92,35 @@ class Blog:
         """Returns the raw list of BlogPost objects."""
         return [i for i in self.data]
     
+    def update(self,
+               post_id: int,
+               author: str,
+               title: str,
+               content: str
+               ):
+        data = self.get_post_by_id(post_id)
+        data.title = title
+        data.author = author
+        data.content = content
+    
     def add(self, post: BlogPost) -> None:
         """Adds a new blog post to the beginning of the list."""
         if post.id in [i.id for i in self.data]:
             raise IndexDuplicateError
         self.data.insert(0,post)
-    
+
     def delete(self, post_id: int) -> None:
         """Deletes a blog post by its index (ID)."""
-        ([i.id for i in self.data])
-        self.data.pop(self.data.index([i.id for i in self.data]))
+        self.data.remove(self.get_post_by_id(post_id))
     def get_highest_index(self) -> int:
         """this will prevent most of the duplicate id issues"""
         return max([i.id for i in self.data])
-    
+    def get_post_by_id(self,id: int) -> BlogPost:
+        """ Returns the post by id (This don't take duplicates into account) """
+        for blog_post in self.data:
+            if blog_post.id == id:
+                return blog_post
+
     @property
     def length(self) -> int:
         """Gets the number of blog posts currently in the blog."""
