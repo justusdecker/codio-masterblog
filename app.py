@@ -64,7 +64,8 @@ def delete(post_id):
     Otherwise, it attempts to delete the post using `BLOG.delete(post_id)`.
     After successful deletion, it renders the main index page.
     """
-    if post_id >= BLOG.length or post_id is None or not BLOG.aslist():
+    print(BLOG.aslist())
+    if not BLOG.get_post_by_id(post_id):
         return "Blog does not exist", 404
     BLOG.delete(post_id)
     return redirect('/')
@@ -73,17 +74,17 @@ def delete(post_id):
 @app.route('/update/<int:post_id>', methods=['GET', 'POST'])
 def update(post_id):
     # Fetch the blog posts from the JSON file
-    if post_id >= BLOG.length or post_id is None or not BLOG.aslist():
+    if BLOG.get_post_by_id(post_id) is None:
         return "Blog does not exist", 404
     if post_id < 0:
-        return 'negative type not supported', 404
+        return 'negative post_id not supported', 404
     if request.method == 'POST':
         # Update the post in the JSON file
         # Redirect back to index
-        request
+        BLOG.update(post_id,request.form['author'],request.form['title'],request.form['content'])
     # Else, it's a GET request
     # So display the update.html page
-    return render_template('update.html', post=BLOG)
+    return render_template('update.html', post=BLOG.get_post_by_id(post_id))
 
 
 if __name__ == '__main__':
